@@ -4,7 +4,7 @@ import Footer from "../Components/footer";
 
 export default function Root() {
     return (
-        <div className="min-h-screen  antialiased text-slate-800 bg-white dark:text-slate-200 dark:bg-slate-900">
+        <div className="min-h-screen   text-slate-800 bg-main-light antialiased dark:text-slate-200 dark:bg-main-dark">
             <Navigation />
             <Outlet />
             <Footer />
