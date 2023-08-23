@@ -1,3 +1,6 @@
+
+import TitleName from "../Utilities/TitleName";
+
 export default function About() {
-    return <p>About</p>;
+    return <TitleName title={'About'} />
 }
