@@ -1,3 +1,3 @@
 export default function Error() {
-    return <p>ops...</p>;
+ return <p>ops...</p>;
 }

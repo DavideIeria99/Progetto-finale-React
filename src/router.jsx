@@ -6,6 +6,8 @@ import About from "./Pages/About";
 import Error from "./Pages/Error";
 import Login from "./Pages/Login";
 import Register from "./Pages/Register";
+import Search, { getGenres } from "./Pages/search";
+
 
 export const router = createBrowserRouter([
     {
@@ -20,6 +22,11 @@ export const router = createBrowserRouter([
             {
                 path: "/about-us",
                 element: <About />,
+            },
+            {
+                path: "/search/:genre?/:num?",
+                element: <Search />,
+                loader: getGenres,
             },
             {
                 path: "/login",
