@@ -13,7 +13,7 @@ export default function Home() {
     `)
       .then((r) => r.json())
       .then((r) => {
-        console.log(r);
+        // console.log(r);
         setData(() => r.results);
       });
   }, []);
@@ -27,8 +27,7 @@ export default function Home() {
               {import.meta.env.VITE_PROJECT_NAME}
             </h1>
             <p className="font-main bg-[#283164] bg-gradient-to-r from-primary to-accent bg-clip-text text-3xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100 md:text-5xl">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo,
-              necessitatibus
+              Il miglior store di giochi al mondo
             </p>
           </div>
         </div>
