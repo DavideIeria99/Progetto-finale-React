@@ -8,6 +8,7 @@ import Login from "./Pages/Login";
 import Register from "./Pages/Register";
 import Search, { getGenres } from "./Pages/search";
 import Profile from "./Pages/profile";
+import ProtectedRoute from "./Components/ProtectedRoute";
 
 
 export const router = createBrowserRouter([
@@ -39,7 +40,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/profile",
-                element: <Profile />,
+                element: <ProtectedRoute element={<Profile />} />,
             },
         ],
     },

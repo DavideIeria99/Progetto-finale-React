@@ -24,8 +24,8 @@ export default function Navigation() {
                     <Link to="/login" className="font-main hidden md:inline ">
                         Login
                     </Link>
-                    <Link to="/" className="font-main hidden md:inline ">
-                        home
+                    <Link to="/register" className="font-main hidden md:inline ">
+                        register
                     </Link>
                 </div>
                 <div className="flex w-1/2 items-center justify-end text-white">
