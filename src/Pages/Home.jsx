@@ -1,15 +1,15 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from "react";
-import Card from "../Components/Card";
 import GetTimeRange from "../Utilities/GetTimeRange";
 import TitleName from "../Utilities/TitleName";
+import CardHome from "../Components/CardHome";
 export default function Home() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_RAWG_API_URL
       }games?dates=${GetTimeRange()}&ordering=-added&key=${import.meta.env.VITE_RAWG_API_KEY
-      }
+      }&ordering=+rating
     `)
       .then((r) => r.json())
       .then((r) => {
@@ -37,8 +37,8 @@ export default function Home() {
             le ultime uscite nel mondo
           </h2>
         </div>
-        <div className="flex flex-wrap">
-          {data ? data.map((game) => <Card key={game.id} game={game} />) : "loading"}
+        <div className="flex flex-wrap" key={data}>
+          {data ? data.map((game) => <CardHome key={game.id} game={game} />) : "loading"}
         </div>
       </div>
     </>

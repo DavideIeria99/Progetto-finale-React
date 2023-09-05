@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+
 export default function Card({ game }) {
     return (
         <div className="mb-5 w-1/2 px-2 md:w-1/4">
