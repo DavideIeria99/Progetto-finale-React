@@ -3,9 +3,14 @@ import { useState } from "react";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { ReactComponent as Bars } from "../assets/icons/Bars.svg";
 import { ReactComponent as User } from "../assets/icons/user.svg";
+import { useAuth } from "../Context/AuthProvider";
+import useProfile from "../Utilities/useProfile";
 
 export default function Navigation() {
     const [open, setOpen] = useState(false);
+    const { signOut } = useAuth();
+    const profile = useProfile();
+    const logOut = () => signOut();
     return (
         <>
             <nav className="fixed z-30 flex h-12 w-screen items-center bg-gradient-to-r from-[#14496c] from-20% via-[#14496cb3] via-90% to-[#14496cb3] px-2 after:absolute after:bottom-[-1px] after:left-[77px] after:h-[1px] after:w-full after:bg-cyan-400 after:content-['']">
@@ -21,9 +26,6 @@ export default function Navigation() {
                     <Link to="/search" className="font-main hidden md:inline ">
                         search
                     </Link>
-                    <Link to="/login" className="font-main hidden md:inline ">
-                        Login
-                    </Link>
                     <Link to="/register" className="font-main hidden md:inline ">
                         register
                     </Link>
@@ -33,6 +35,15 @@ export default function Navigation() {
                     <Link to="/login" className="ms-4">
                         <User />
                     </Link>
+                    {profile && (
+                        <>
+                            <Link to="/profile" className="mx-4">
+                                {profile.username}
+                                <button onClick={logOut}>LogOut</button>
+                            </Link>
+                        </>
+                    )}
+
                     <button onClick={() => setOpen(!open)} className="ml-4 md:hidden">
                         <Bars />
                     </button>
