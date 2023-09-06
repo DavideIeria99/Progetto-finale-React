@@ -49,6 +49,7 @@ export default function Navigation() {
                     </button>
                 </div>
             </nav>
+            {/* navBar mobile */}
             <nav
                 className={
                     "fixed right-0 z-20 h-screen w-full overflow-y-auto bg-gray-300 bg-opacity-80 p-4 pt-20 backdrop-blur-sm  transition-transform dark:bg-sky-900 dark:bg-opacity-80 " +
