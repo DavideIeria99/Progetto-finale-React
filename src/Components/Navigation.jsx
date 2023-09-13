@@ -3,8 +3,8 @@ import { useState } from "react";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { ReactComponent as Bars } from "../assets/icons/Bars.svg";
 import { ReactComponent as User } from "../assets/icons/user.svg";
-import { useAuth } from "../Context/AuthProvider";
 import useProfile from "../Utilities/useProfile";
+import { useAuth } from "../Context/AuthProvider";
 
 export default function Navigation() {
     const [open, setOpen] = useState(false);
@@ -39,7 +39,7 @@ export default function Navigation() {
                         <>
                             <Link to="/profile" className="mx-4">
                                 {profile.username}
-                                <button onClick={logOut}>LogOut</button>
+                                <button className="ms-2" onClick={logOut}>LogOut</button>
                             </Link>
                         </>
                     )}

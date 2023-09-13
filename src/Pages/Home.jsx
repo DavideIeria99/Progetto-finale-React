@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from "react";
-import GetTimeRange from "../Utilities/GetTimeRange";
 import TitleName from "../Utilities/TitleName";
 import CardHome from "../Components/CardHome";
 export default function Home() {
@@ -8,7 +7,7 @@ export default function Home() {
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_RAWG_API_URL
-      }games?dates=${GetTimeRange()}&ordering=-added&key=${import.meta.env.VITE_RAWG_API_KEY
+      }games?&ordering=-added&key=${import.meta.env.VITE_RAWG_API_KEY
       }&ordering=+rating
     `)
       .then((r) => r.json())
@@ -27,13 +26,13 @@ export default function Home() {
               {import.meta.env.VITE_PROJECT_NAME}
             </h1>
             <p className="font-main bg-[#283164] bg-gradient-to-r from-primary to-accent bg-clip-text text-3xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100 md:text-5xl">
-              Il miglior store di giochi al mondo
+              La migliore raccolta di giochi al mondo
             </p>
           </div>
         </div>
         <div>
           <h2 className="font-main bg-[#283164] bg-gradient-to-r from-primary to-accent bg-clip-text text-3xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100 md:text-5xl">
-            le ultime uscite nel mondo
+            i migliori giochi del momemto
           </h2>
         </div>
         <div className="flex flex-wrap" key={data}>
