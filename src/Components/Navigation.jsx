@@ -1,16 +1,30 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { ReactComponent as Bars } from "../assets/icons/Bars.svg";
 import { ReactComponent as User } from "../assets/icons/user.svg";
-import useProfile from "../Utilities/useProfile";
-import { useAuth } from "../Context/AuthProvider";
+
+import useAuthStore from "../store/authStore";
+import { supabase } from "../supabase/client";
 
 export default function Navigation() {
     const [open, setOpen] = useState(false);
-    const { signOut } = useAuth();
-    const profile = useProfile();
-    const logOut = () => signOut();
+    const setLoggedOut = useAuthStore((state) => state.setLoggedOut);
+    const profile = useAuthStore((state) => state.profile);
+
+    const navigate = useNavigate();
+
+    const logOut = async () => {
+        try {
+            const { error } = await supabase.auth.signOut();
+            if (error) throw error;
+            setLoggedOut();
+            navigate("/");
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <>
             <nav className="fixed z-30 flex h-12 w-screen items-center bg-gradient-to-r from-[#14496c] from-20% via-[#14496cb3] via-90% to-[#14496cb3] px-2 after:absolute after:bottom-[-1px] after:left-[77px] after:h-[1px] after:w-full after:bg-cyan-400 after:content-['']">

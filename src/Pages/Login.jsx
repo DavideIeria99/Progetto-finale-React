@@ -1,15 +1,15 @@
 import { useState } from "react";
 import Input from "../Components/Input";
 import { supabase } from "../supabase/client";
-import { useNavigate } from "react-router-dom";
-import { useAuth } from "../Context/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
+import useAuthStore from "../store/authStore";
 
 export default function Login() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [message, setMessage] = useState("");
 
-    const { login } = useAuth();
+    const setLoggedIn = useAuthStore((state) => state.setLoggedIn);
 
     const navigate = useNavigate();
 
@@ -17,28 +17,21 @@ export default function Login() {
         e.preventDefault();
 
         try {
-            const {
-                data: { user, session },
-                error,
-            } = await login(email, password);
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email,
+                password,
+            });
+            console.log(data, error);
+            if (error) throw error;
 
-            if (error) {
-                setMessage(error.message);
-            }
-
-            if (user && session) {
-                navigate("/profile");
+            if (data.session !== null) {
+                setLoggedIn(data.session);
+                navigate("/");
             }
         } catch (error) {
             console.log(error);
         }
-
-        const { data, error } = await supabase.auth.signInWithPassword({
-            email,
-            password,
-        });
-        console.log(data, error);
-    }
+    };
     return (
         <div className="mx-auto mt-24 min-h-screen lg:w-1/2">
             <p className="text-center text-2xl font-bold text-white">Login</p>
@@ -49,8 +42,9 @@ export default function Login() {
             </form>
             {message && <p>{message}</p>}
 
+            <p>
+                Oppure <Link to="/register">Register</Link>
+            </p>
         </div>
-
     )
-
 }

@@ -1,15 +1,12 @@
 
-import { useEffect } from "react"
-import { useState } from "react"
-import useProfile from "../Utilities/useProfile";
+import { useEffect, useState } from "react"
 import { supabase } from "../supabase/client";
 import getProfileImage from "../Utilities/getProfileImage";
 import Input from "../Components/Input";
-import { useAuth } from "../Context/AuthProvider";
+import useAuthStore from "../store/authStore";
 
 export default function UpdateImage() {
-    const { user } = useAuth();
-    const profile = useProfile();
+    const profile = useAuthStore((state) => state.profle);
     const [preview, setPreview] = useState();
     const [uploading, setUploading] = useState(false);
     const [file, setFile] = useState();
@@ -36,8 +33,7 @@ export default function UpdateImage() {
 
         setUploading(() => true);
         // nome file
-        const fileExt = file.name.split(".").pop();
-        const fileName = `${user.id + Math.random()}.${fileExt}`;
+        const fileName = `${profile.id}`;
 
         const { error: uploadError } = await supabase.storage
             .from("avatars")
@@ -50,14 +46,14 @@ export default function UpdateImage() {
         // update profile
         const updated_at = new Date();
         const { error } = await supabase.from("profiles").upsert({
-            id: user.id,
+            id: profile.id,
             updated_at,
             avatar_url: fileName,
         });
 
         // update user
         const { errorUser } = await supabase.auth.updateUser({
-            id: user.id,
+            id: profile.id,
             updated_at,
         });
 
@@ -71,7 +67,7 @@ export default function UpdateImage() {
     };
 
     return (
-        <div className="bg-slate-500 w-2/5 mx-auto rounded-md">
+        <div className=" w-2/5 mx-auto bg-slate-500 rounded-md">
             <h2 className="text-center font-bold text-lg">{uploading ? "uploading" : "Upload"}</h2>
 
             {/* l'immagine presente */}
