@@ -6,7 +6,7 @@ import Input from "../Components/Input";
 import useAuthStore from "../store/authStore";
 
 export default function UpdateImage() {
-    const profile = useAuthStore((state) => state.profle);
+    const profile = useAuthStore((state) => state.profile);
     const [preview, setPreview] = useState();
     const [uploading, setUploading] = useState(false);
     const [file, setFile] = useState();
@@ -16,9 +16,12 @@ export default function UpdateImage() {
             setPreview(null);
             return;
         }
+
         const objectUrl = URL.createObjectURL(file);
         setPreview(objectUrl);
-    }, [file])
+
+        return () => URL.revokeObjectURL(objectUrl);
+    }, [file]);
 
     const handleFile = (e) => {
         if (!e.target.files) {
@@ -33,7 +36,7 @@ export default function UpdateImage() {
 
         setUploading(() => true);
         // nome file
-        const fileName = `${profile.id}`;
+        const fileName = `${profile.id + Math.random()}`;
 
         const { error: uploadError } = await supabase.storage
             .from("avatars")
@@ -51,14 +54,8 @@ export default function UpdateImage() {
             avatar_url: fileName,
         });
 
-        // update user
-        const { errorUser } = await supabase.auth.updateUser({
-            id: profile.id,
-            updated_at,
-        });
-
-        if (error || errorUser) {
-            console.log(error, errorUser);
+        if (error) {
+            console.log(error);
         } else {
             setUploading(() => false);
             setFile(() => null);
