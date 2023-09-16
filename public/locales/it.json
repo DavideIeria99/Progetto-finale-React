@@ -1,0 +1,22 @@
+{
+  "home": {
+    "title": "Benvenuto in Rehack",
+    "subtitle": "La migliore raccolta di giochi al mondo",
+    "playMoment": "i miglior giochi del momento"
+  },
+  "login": {
+    "title": "Loggati adesso"
+  },
+  "common": {
+    "login": "Loggati",
+    "register": "Registrati",
+    "search": "cerca"
+  },
+  "search": {
+    "meta": {
+      "title": "ReHack - Pagina di ricerca"
+    },
+    "genres": "Generi",
+    "stores": "Negozi"
+  }
+}

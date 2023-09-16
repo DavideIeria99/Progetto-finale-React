@@ -1,0 +1,22 @@
+{
+  "home": {
+    "title": "Welcome to Rehack",
+    "subtitle": "The best collection of games in the world",
+    "playMoment": "the best games of the moment"
+  },
+  "login": {
+    "title": "Login now to do some stuff"
+  },
+  "common": {
+    "login": "Login",
+    "register": "Register",
+    "search": "search"
+  },
+  "search": {
+    "meta": {
+      "title": "ReHack - Search Page"
+    },
+    "genres": "Genres",
+    "stores": "Stores"
+  }
+}
