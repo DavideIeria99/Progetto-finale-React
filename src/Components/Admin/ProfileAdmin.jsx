@@ -2,55 +2,78 @@ import { useState } from "react";
 import { supabase } from "../../supabase/client";
 import { useEffect } from "react";
 import BanUser from "./BanUser";
+import Button from "../UI/Button";
+import Table from "../UI/Table";
 
 export default function ProfileAdmin() {
     const [data, setData] = useState();
 
+    const [page, setPage] = useState(0);
+
     const getData = async () => {
-        let { data, error } = await supabase.
-            from("profiles")
+        let { data, error } = await supabase
+            .from("profiles")
             .select()
+            .range(10 * page, page * 10 + 10)
             .order("id", { ascending: true });
         console.log("data", data, error);
-    }
-    const header = [
-        "Id",
-        "Username",
-        "Firstname",
-        "Lastname",
-        "Banned until",
-        "usern",
-    ];
-    const entries = data.map((el) => [
-        el.id,
-        el.username,
-        el.first_name,
-        el.last_name,
-        <BanUser
-            key={el.id}
-            user={el.id}
-            banned={el.banned_until}
-            getData={getData}
-        />,
-    ]);
 
-    setData({
-        header,
-        entries,
-    });
+        const headers = ["Id", "Username", "Firstname", "Lastname", "Banned until"];
 
+        const entries = data.map((el) => [
+            el.id,
+            el.username,
+            el.first_name,
+            el.last_name,
+            <BanUser
+                key={el.id}
+                user={el.id}
+                banned={el.banned_until}
+                getData={getData}
+            />,
+        ]);
 
-
+        setData({
+            headers,
+            entries,
+        });
+    };
 
     useEffect(() => {
         getData();
-    }, []);
-
-
+    }, [page]);
 
     return (
         <div>
-            <p>ciao</p>
+            {data ? (
+                <div className="relative overflow-x-auto ">
+                    <div className="shadow-md sm:rounded-lg">
+                        <Table headers={data.headers} entries={data.entries} />
+                    </div>
+                    <div className="mt-12 flex justify-center">
+                        <div className="mx-2">
+                            {page > 0 && (
+                                <Button
+                                    type="button"
+                                    onClick={() => setPage((prev) => prev - 1)}
+                                    label="Prev"
+                                />
+                            )}
+                        </div>
+
+                        {page}
+
+                        <div className="mx-2">
+                            <Button
+                                type="button"
+                                onClick={() => setPage((prev) => prev + 1)}
+                                label="Next"
+                            />
+                        </div>
+                    </div>
+                </div>
+            ) : ("Loading")}
         </div>
-    )
+    );
 }
+
