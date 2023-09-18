@@ -1,13 +1,17 @@
+import { Link } from "react-router-dom"
 
 export default function Card({ game }) {
     return (
-        <div className="mb-5 w-1/2 px-2 md:w-1/4">
-            <p>{game.name}</p>
-            <img
-                src={game.background_image}
-                alt="img"
-                className="h-40 w-full object-cover"
-            />
-        </div>
+        <div className="mb-5 w-1/2 px-2 md:w-1/4 hover:ease-in duration-300 hover:z-10 hover:scale-125">
+            <Link to={`/details/${game.id}`} >
+                <p>{game.name}</p>
+                <img
+                    src={game.background_image}
+                    alt="img"
+                    className="h-40 w-full object-cover"
+                />
+            </Link>
+        </div >
+
     );
 }

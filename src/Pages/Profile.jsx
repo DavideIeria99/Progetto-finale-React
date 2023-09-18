@@ -1,7 +1,8 @@
 import ProfileAdmin from "../Components/Admin/ProfileAdmin";
 import ProfileMain from "../Components/ProfileMain";
 // import UpdateImage from "../Components/UpdateImage";
-import useAuthStore from "../store/authStore";
+import useAuthStore from "../Zustand/authStore";
+
 
 export default function Profile() {
     const isAdmin = useAuthStore((state) => state.isAdmin)

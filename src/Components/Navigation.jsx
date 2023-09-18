@@ -3,18 +3,17 @@ import { useState } from "react";
 import ThemeSwitcher from "./Switchers/ThemeSwitcher";
 import { ReactComponent as Bars } from "../assets/icons/Bars.svg";
 import { ReactComponent as User } from "../assets/icons/user.svg";
-
-
-import useAuthStore from "../store/authStore";
+import useAuthStore from "../Zustand/authStore";
 import { supabase } from "../supabase/client";
 import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./Switchers/LanguageSwitcher";
 
 export default function Navigation() {
     const [open, setOpen] = useState(false);
     const setLoggedOut = useAuthStore((state) => state.setLoggedOut);
     const profile = useAuthStore((state) => state.profile);
 
-    const { t } = useTranslation()
+    const { t } = useTranslation();
 
     const navigate = useNavigate();
 
@@ -45,11 +44,12 @@ export default function Navigation() {
                         {t("common.search")}
 
                     </Link>
-                    <Link to="/register" className="font-main hidden md:inline ">
+                    <Link to="/sign-in" className="font-main hidden md:inline ">
                         {t("common.register")}
                     </Link>
                 </div>
                 <div className="flex w-1/2 items-center justify-end text-white">
+                    <LanguageSwitcher />
                     <ThemeSwitcher />
                     <Link to="/login" className="ms-4">
                         <User />

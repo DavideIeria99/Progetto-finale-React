@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState } from "react";
 import TitleName from "../Utilities/TitleName";
 import CardHome from "../Components/CardHome";
@@ -22,7 +21,7 @@ export default function Home() {
   return (
     <>
       <TitleName title={"Home"} />
-      <div className="min-h-screen">
+      <div className="min-h-screen pt-24">
         <div className="gap-12 px-12 py-12 md:flex md:py-24">
           <div className="w-full md:w-2/5">
             <h1 className="font-main bg-[#283164] bg-gradient-to-r from-primary to-accent bg-clip-text pb-12 text-6xl font-extrabold text-transparent dark:from-sky-600 dark:to-sky-100">

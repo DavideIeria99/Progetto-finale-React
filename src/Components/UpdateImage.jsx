@@ -3,7 +3,8 @@ import { useEffect, useState } from "react"
 import { supabase } from "../supabase/client";
 import getProfileImage from "../Utilities/getProfileImage";
 import Input from "../Components/Input";
-import useAuthStore from "../store/authStore";
+import useAuthStore from "../Zustand/authStore";
+
 
 export default function UpdateImage() {
     const profile = useAuthStore((state) => state.profile);
