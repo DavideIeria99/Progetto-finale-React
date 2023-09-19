@@ -4,5 +4,5 @@ const projectURL = import.meta.env.VITE_SUPABASE_PROJECT_URL;
 const projectKey = import.meta.env.VITE_SUPABASE_PROJECT_KEY;
 
 export const supabase = createClient(projectURL, projectKey, {
- multiTab: false,
+  multiTab: false,
 });

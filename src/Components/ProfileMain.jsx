@@ -1,3 +1,3 @@
 export default function ProfileMain() {
-    return <p>main</p>
+  return <p>main</p>;
 }

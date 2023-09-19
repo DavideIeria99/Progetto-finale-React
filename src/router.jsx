@@ -11,43 +11,42 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import SignIn from "./Pages/signIn";
 import Details, { getGameDetails } from "./Pages/Details";
 
-
 export const router = createBrowserRouter([
-    {
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <Error />,
+    children: [
+      {
         path: "/",
-        element: <Root />,
-        errorElement: <Error />,
-        children: [
-            {
-                path: "/",
-                element: <Home />,
-            },
-            {
-                path: "/about-us",
-                element: <About />,
-            },
-            {
-                path: "/search/:genre?/:num?",
-                element: <Search />,
-                loader: getGenres,
-            },
-            {
-                path: "/login",
-                element: <Login />,
-            },
-            {
-                path: "/sign-in",
-                element: <SignIn />,
-            },
-            {
-                path: "/details/:id",
-                element: <Details />,
-                loader: getGameDetails,
-            },
-            {
-                path: "/profile",
-                element: <ProtectedRoute element={<Profile />} />,
-            },
-        ],
-    },
+        element: <Home />,
+      },
+      {
+        path: "/about-us",
+        element: <About />,
+      },
+      {
+        path: "/search/:genre?/:num?",
+        element: <Search />,
+        loader: getGenres,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/sign-in",
+        element: <SignIn />,
+      },
+      {
+        path: "/details/:id",
+        element: <Details />,
+        loader: getGameDetails,
+      },
+      {
+        path: "/profile",
+        element: <ProtectedRoute element={<Profile />} />,
+      },
+    ],
+  },
 ]);

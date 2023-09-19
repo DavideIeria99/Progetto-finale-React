@@ -1,25 +1,24 @@
 import { useLoaderData } from "react-router-dom";
 
-
 export default function Details() {
-    const game = useLoaderData();
-    console.log(game);
-    return (
-        <div
-            className="min-h-screen px-12 py-24"
-            style={{
-                background: `linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url("${game.background_image}")`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-            }}
-        >
-            <div className="flex text-white">
-                <div className="w-1/2">
-                    <p className="font-main  bg-gradient-to-r  from-sky-600 to-sky-100 bg-clip-text pb-4 text-3xl font-extrabold text-transparent md:text-5xl ">
-                        {game.name}
-                    </p>
+  const game = useLoaderData();
+  console.log(game);
+  return (
+    <div
+      className="min-h-screen px-12 py-24"
+      style={{
+        background: `linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,1)), url("${game.background_image}")`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
+      <div className="flex text-white">
+        <div className="w-1/2">
+          <p className="font-main  bg-gradient-to-r  from-sky-600 to-sky-100 bg-clip-text pb-4 text-3xl font-extrabold text-transparent md:text-5xl ">
+            {game.name}
+          </p>
 
-                    {/* {profile && (
+          {/* {profile && (
                         <div className="my-12">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -39,21 +38,22 @@ export default function Details() {
                         </div>
                     )} */}
 
-                    <div dangerouslySetInnerHTML={{ __html: game.description }}></div>
-                </div>
-
-                {/* <div className="w-1/2">{profile && <GameChat game={game.id} />}</div> */}
-            </div>
+          <div dangerouslySetInnerHTML={{ __html: game.description }}></div>
         </div>
-    )
+
+        {/* <div className="w-1/2">{profile && <GameChat game={game.id} />}</div> */}
+      </div>
+    </div>
+  );
 }
 export const getGameDetails = async ({ params }) => {
-    return await fetch(
-        `${import.meta.env.VITE_RAWG_API_URL}games/${params.id}?key=${import.meta.env.VITE_RAWG_API_KEY
-        }`,
-    )
-        .then((r) => r.json())
-        .then((r) => {
-            return r;
-        });
-}
+  return await fetch(
+    `${import.meta.env.VITE_RAWG_API_URL}games/${params.id}?key=${
+      import.meta.env.VITE_RAWG_API_KEY
+    }`,
+  )
+    .then((r) => r.json())
+    .then((r) => {
+      return r;
+    });
+};
