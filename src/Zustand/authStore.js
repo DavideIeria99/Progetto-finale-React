@@ -13,7 +13,12 @@ const useAuthStore = create((set) => ({
   setLoggedIn: async (session) => {
     const { data } = await supabase
       .from("profiles")
-      .select("*")
+      .select(
+        `
+        *,
+        favorites: favorites(*)
+      `,
+      )
       .eq("id", session.user.id)
       .single();
 

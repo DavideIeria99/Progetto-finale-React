@@ -29,7 +29,7 @@ export default function Login() {
     }
   };
   return (
-    <div className="mx-auto mt-24 min-h-screen lg:w-1/2">
+    <div className="mx-auto pt-24  min-h-screen lg:w-1/2">
       <Formik
         initialValues={{
           password: "",
@@ -43,7 +43,7 @@ export default function Login() {
         })}
         onSubmit={(values) => submit(values)}
       >
-        <Form className="mx-auto flex w-4/5 flex-wrap rounded bg-slate-50 py-8 text-black shadow dark:bg-gray-900 md:w-1/3">
+        <Form className="mx-auto flex  w-4/5 flex-wrap rounded bg-slate-50 py-8 text-black shadow dark:bg-gray-900 md:w-1/3">
           <div className="w-full text-center">
             <h1 className="text-4xl font-bold text-black dark:text-white">
               Login
