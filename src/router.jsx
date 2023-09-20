@@ -5,7 +5,6 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Error from "./Pages/Error";
 import Login from "./Pages/Login";
-import Search, { getGenres } from "./Pages/search";
 import Profile from "./Pages/profile";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import SignIn from "./Pages/signIn";
@@ -24,11 +23,6 @@ export const router = createBrowserRouter([
       {
         path: "/about-us",
         element: <About />,
-      },
-      {
-        path: "/search/:genre?/:num?",
-        element: <Search />,
-        loader: getGenres,
       },
       {
         path: "/login",
