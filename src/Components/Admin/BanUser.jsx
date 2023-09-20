@@ -22,6 +22,7 @@ export default function BanUser({ user, getData, banned }) {
       .eq("id", user)
       .select();
     console.log(data, error);
+
     getData();
   };
 

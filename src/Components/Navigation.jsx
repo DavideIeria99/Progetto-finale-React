@@ -1,8 +1,8 @@
+import { ReactComponent as Bars } from "../assets/icons/Bars.svg";
+import { ReactComponent as User } from "../assets/icons/user.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ThemeSwitcher from "./Switchers/ThemeSwitcher";
-import { ReactComponent as Bars } from "../assets/icons/Bars.svg";
-import { ReactComponent as User } from "../assets/icons/user.svg";
 import useAuthStore from "../Zustand/authStore";
 import { supabase } from "../supabase/client";
 import { useTranslation } from "react-i18next";

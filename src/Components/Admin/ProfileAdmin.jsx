@@ -1,11 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "../../supabase/client";
-import { useEffect } from "react";
 import BanUser from "./BanUser";
-import Button from "../UI/Button";
 import Table from "../UI/Table";
-
-export default function ProfileAdmin() {
+import Button from "../UI/Button";
+export default function Profiles() {
   const [data, setData] = useState();
 
   const [page, setPage] = useState(0);
