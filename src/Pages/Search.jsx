@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import GenresList from "../Components/GenresList";
 import Card from "../Components/Card";
 import { useEffect, useState } from "react";
@@ -20,8 +20,7 @@ export default function Search() {
     setGames(null);
     setSearched("");
     fetch(
-      `${import.meta.env.VITE_RAWG_API_URL}games?&key=${
-        import.meta.env.VITE_RAWG_API_KEY
+      `${import.meta.env.VITE_RAWG_API_URL}games?&key=${import.meta.env.VITE_RAWG_API_KEY
       }&genres=${genre}&page=${num}&page_size=${page_size}&ordering=+rating`,
     )
       .then((r) => r.json())
@@ -36,8 +35,7 @@ export default function Search() {
     setLoading(true);
     setGames(null);
     fetch(
-      `${import.meta.env.VITE_RAWG_API_URL}games?&key=${
-        import.meta.env.VITE_RAWG_API_KEY
+      `${import.meta.env.VITE_RAWG_API_URL}games?&key=${import.meta.env.VITE_RAWG_API_KEY
       }&page_size=${page_size}&search=${searched}&search_precise=true&&ordering=+rating `,
     )
       .then((r) => r.json())
@@ -52,8 +50,7 @@ export default function Search() {
     setLoading(true);
     setGames(null);
     fetch(
-      `${import.meta.env.VITE_RAWG_API_URL}games?&key=${
-        import.meta.env.VITE_RAWG_API_KEY
+      `${import.meta.env.VITE_RAWG_API_URL}games?&key=${import.meta.env.VITE_RAWG_API_KEY
       }&page_size=${page_size}&search=${searched}&search_precise=true&&ordering=+rating `,
     )
       .then((r) => r.json())
@@ -114,8 +111,7 @@ export default function Search() {
 //funzione generi
 export const getGenres = async () => {
   return await fetch(
-    `${import.meta.env.VITE_RAWG_API_URL}genres?key=${
-      import.meta.env.VITE_RAWG_API_KEY
+    `${import.meta.env.VITE_RAWG_API_URL}genres?key=${import.meta.env.VITE_RAWG_API_KEY
     }`,
   )
     .then((r) => r.json())
