@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import useAuthStore from "../Zustand/authStore";
 import { supabase } from "../supabase/client";
 
+
 export default function Details() {
   const game = useLoaderData();
   const setLoggedIn = useAuthStore((state) => state.setLoggedIn);
