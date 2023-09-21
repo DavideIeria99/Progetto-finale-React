@@ -5,9 +5,9 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Error from "./Pages/Error";
 import Login from "./Pages/Login";
-import Profile from "./Pages/profile";
+import Profile from "./Pages/Profile";
 import ProtectedRoute from "./Components/ProtectedRoute";
-import SignIn from "./Pages/signIn";
+import SignIn from "./Pages/SignIn";
 import Details, { getGameDetails } from "./Pages/Details";
 import SearchPage, { loadAll } from "./Pages/SearchPage";
 
