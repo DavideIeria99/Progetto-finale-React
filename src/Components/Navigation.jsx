@@ -40,6 +40,9 @@ export default function Navigation() {
           <Link to="/" className="font-main font-bold tracking-widest ">
             Home
           </Link>
+          <Link to="/search-page" className="font-main hidden md:inline ">
+            {t("common.search")}
+          </Link>
           <Link to="/sign-in" className="font-main hidden md:inline ">
             {t("common.register")}
           </Link>

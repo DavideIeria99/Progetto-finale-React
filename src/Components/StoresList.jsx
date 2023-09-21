@@ -1,26 +1,27 @@
 import { useTranslation } from "react-i18next";
 
-export default function GenresList({ genres, searchParams, setSearchParams }) {
-  const handleChange = (slug) => {
+export default function StoresList({ stores, searchParams, setSearchParams }) {
+  const handleChange = (id) => {
     const allParams = Object.fromEntries([...searchParams]);
 
     setSearchParams({
       ...allParams,
-      genres: slug,
+      stores: id,
     });
   };
+
   const { t } = useTranslation();
   return (
     <>
-      <p className="mb-4 text-xl">{t("search.genres")}</p>
-      <div className="">
-        {genres.map((el) => (
+      <p className="mb-4 text-xl">{t("search.stores")}</p>
+      <div className="h-72 overflow-y-scroll">
+        {stores.map((el) => (
           <p
-            onClick={() => handleChange(el.slug)}
+            onClick={() => handleChange(el.id)}
             key={el.id}
             className={
               "cursor-pointer " +
-              (searchParams.get("genres") === el.slug
+              (searchParams.get("stores") == el.id
                 ? "border-b-2 border-accent font-bold tracking-widest"
                 : "")
             }

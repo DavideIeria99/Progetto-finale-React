@@ -9,6 +9,7 @@ import Profile from "./Pages/profile";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import SignIn from "./Pages/signIn";
 import Details, { getGameDetails } from "./Pages/Details";
+import SearchPage, { loadAll } from "./Pages/SearchPage";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,11 @@ export const router = createBrowserRouter([
       {
         path: "/about-us",
         element: <About />,
+      },
+      {
+        path: "/search-page",
+        element: <SearchPage />,
+        loader: loadAll,
       },
       {
         path: "/login",
