@@ -1,5 +1,6 @@
 import ProfileAdmin from "../Components/Admin/ProfileAdmin";
 import ProfileMain from "../Components/ProfileMain";
+import UpdateImage from "../Components/UpdateImage";
 import useAuthStore from "../Zustand/authStore";
 
 export default function Profile() {
@@ -10,7 +11,7 @@ export default function Profile() {
     <div className="">
       <h1>benvenuto {profile && profile.first_name} </h1>
       {isAdmin ? <ProfileAdmin /> : <ProfileMain />}
-
+      <UpdateImage />
       <button className="bg-green"></button>
     </div>
   );

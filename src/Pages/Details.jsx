@@ -1,6 +1,7 @@
 import { useLoaderData } from "react-router-dom";
 import useAuthStore from "../Zustand/authStore";
 import { supabase } from "../supabase/client";
+import GameChat from "../Components/GameChat/GameChat";
 
 
 export default function Details() {
@@ -75,7 +76,7 @@ export default function Details() {
           <div dangerouslySetInnerHTML={{ __html: game.description }}></div>
         </div>
 
-        {/* <div className="w-1/2">{profile && <GameChat game={game.id} />}</div> */}
+        <div className="w-1/2">{profile && <GameChat game={game.id} />}</div>
       </div>
     </div>
   );

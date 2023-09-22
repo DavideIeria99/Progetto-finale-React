@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase/client";
 import getProfileImage from "../Utilities/getProfileImage";
-import Input from "../Components/Input";
+import Input from "../Components/InputFake";
 import useAuthStore from "../Zustand/authStore";
 
 export default function UpdateImage() {

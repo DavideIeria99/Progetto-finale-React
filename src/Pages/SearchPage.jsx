@@ -52,7 +52,7 @@ export default function SearchPage() {
 
   return (
     <div className="flex">
-      <div className="flex w-1/5 flex-col">
+      <div className="flex w-1/5 flex-col pt-24">
         <div className="">
           <input
             className="peer block w-full appearance-none rounded-md border-0  bg-slate-200  p-2.5 text-gray-900  focus:outline-none focus:ring-0  dark:bg-sky-950 dark:text-white"
@@ -80,7 +80,7 @@ export default function SearchPage() {
       <div className="w-4/5">
         {games && (
           <>
-            <div className="grid grid-cols-1 ">
+            <div className="flex flex-wrap pt-24 ">
               {games.results.map((game) => (
                 <Card key={game.id} game={game} />
               ))}
