@@ -21,8 +21,7 @@ export default function Home() {
     <>
       <div className="min-h-screen pt-12">
         <TitleName title={"Home"} />
-        <div className="gap-12 px-12 py-12 md:flex md:py-24 bg-header">
-
+        <div className="gap-12 px-12 py-12 md:flex md:py-24 bg-header-light dark:bg-header-dark">
           <div className="w-full  flex justify-around ">
             <h1 className="font-main bg-[#283164] bg-gradient-to-r bg-clip-text pb-12 text-6xl font-extrabold text-transparent from-sky-600 to-sky-100">
               {t("home.title")}

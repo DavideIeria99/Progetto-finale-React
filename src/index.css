@@ -28,8 +28,14 @@
     background-repeat: repeat, no-repeat, no-repeat;
   }
 
-  .bg-header {
+  .bg-header-dark {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgb(17, 24, 39)),
+      url("./assets/sfondoStore.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  .bg-header-light {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgb(187, 187, 187)),
       url("./assets/sfondoStore.jpg");
     background-size: cover;
     background-position: center;

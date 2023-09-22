@@ -1,69 +1,37 @@
 import { ReactComponent as Bars } from "../assets/icons/Bars.svg";
-import { ReactComponent as User } from "../assets/icons/user.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import ThemeSwitcher from "./Switchers/ThemeSwitcher";
-import useAuthStore from "../Zustand/authStore";
-import { supabase } from "../supabase/client";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./Switchers/LanguageSwitcher";
-
+import DefaultDropdown from "./UI/DefaultDropdown";
 export default function Navigation() {
   const [open, setOpen] = useState(false);
-  const setLoggedOut = useAuthStore((state) => state.setLoggedOut);
-  const profile = useAuthStore((state) => state.profile);
-
   const { t } = useTranslation();
-
-  const navigate = useNavigate();
-
-  const logOut = async () => {
-    try {
-      const { error } = await supabase.auth.signOut();
-      if (error) throw error;
-      setLoggedOut();
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <>
-      <nav className="fixed z-30 flex h-12 w-screen items-center bg-gradient-to-r from-[#14496c] from-20% via-[#14496cb3] via-90% to-[#14496cb3] px-2 after:absolute after:bottom-[-1px] after:left-[77px] after:h-[1px] after:w-full after:bg-cyan-400 after:content-['']">
-        <div
-          className={
-            "after:border-r-6 fixed left-0 top-[19px] z-[-1] h-[44px] w-[60px] border-b-2 border-cyan-400 bg-[#14496c] before:absolute before:bottom-[1px] before:right-[-8px] before:z-[0] before:h-[14px] before:w-[18px] before:skew-x-[-50deg] before:bg-[#14496c] before:content-[''] after:absolute after:bottom-[-2px] after:right-[-10px] after:h-[15px] after:w-[6px] after:skew-x-[-50deg] after:animate-flash after:bg-white  after:content-['']"
-          }
-        ></div>
-        <div className="flex w-2/3 justify-between text-white md:w-1/2">
+      <nav className="fixed z-30 flex h-14 w-screen items-center bg-[#14496c]  px-2">
+        {/* link principali */}
+        <div className="flex w-1/3  justify-around text-white md:w-1/3">
           <Link to="/" className="font-main font-bold tracking-widest ">
             Home
           </Link>
           <Link to="/search-page" className="font-main hidden md:inline ">
             {t("common.search")}
           </Link>
-          <Link to="/sign-in" className="font-main hidden md:inline ">
-            {t("common.register")}
-          </Link>
         </div>
-        <div className="flex w-1/2 items-center justify-end text-white">
+        {/* titolo */}
+        <div className="flex w-1/3 justify-center text-white md:w-1/3">
+          <h1 className="font-main bg-[#283164] bg-gradient-to-r bg-clip-text p-12  text-6xl font-extrabold text-transparent from-sky-600 to-sky-100">
+            {import.meta.env.VITE_PROJECT_NAME}
+          </h1>
+        </div>
+        {/* link secondari */}
+        <div className="flex w-1/3 items-center justify-around text-white">
           <LanguageSwitcher />
           <ThemeSwitcher />
-          <Link to="/login" className="ms-4">
-            <User />
-          </Link>
-          {profile && (
-            <>
-              <Link to="/profile" className="mx-4">
-                {profile.username}
-                <button className="ms-2" onClick={logOut}>
-                  LogOut
-                </button>
-              </Link>
-            </>
-          )}
-
+          <DefaultDropdown />
           <button onClick={() => setOpen(!open)} className="ml-4 md:hidden">
             <Bars />
           </button>
