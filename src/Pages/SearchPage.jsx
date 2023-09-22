@@ -80,7 +80,7 @@ export default function SearchPage() {
       <div className="w-4/5">
         {games && (
           <>
-            <div className="flex flex-wrap pt-24 ">
+            <div className="flex flex-wrap pt-24 justify-evenly ">
               {games.results.map((game) => (
                 <Card key={game.id} game={game} />
               ))}

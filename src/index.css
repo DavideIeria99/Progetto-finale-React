@@ -16,32 +16,22 @@
 
 @layer utilities {
   .bg-main-dark {
-    background: url("./assets/grid.png"),
-      radial-gradient(
-        at -70% 100%,
-        rgba(60, 136, 194, 0.51) 0px,
-        transparent 50%
-      ),
-      radial-gradient(
-        at 100% 100%,
-        hsla(204, 100%, 76%, 0.2) 0px,
-        transparent 50%
-      ),
-      linear-gradient(to top left, #111827, #0c4a63);
+    background: rgb(17, 24, 39);
     background-size: 40px, cover, cover, cover;
     background-repeat: repeat, no-repeat, no-repeat, no-repeat;
     background-position: center, center, center, center;
   }
 
   .bg-main-light {
-    background: url("./assets/grid.png"),
-      radial-gradient(at 16% 93%, hsla(206, 53%, 46%, 0.7) 0px, transparent 50%),
-      radial-gradient(
-        at 100% 100%,
-        hsla(204, 100%, 76%, 0.5) 0px,
-        transparent 50%
-      );
+    background: rgb(187, 187, 187);
     background-size: 40px, cover, cover;
     background-repeat: repeat, no-repeat, no-repeat;
+  }
+
+  .bg-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgb(17, 24, 39)),
+      url("./assets/sfondoStore.jpg");
+    background-size: cover;
+    background-position: center;
   }
 }

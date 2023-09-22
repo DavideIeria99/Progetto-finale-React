@@ -12,6 +12,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.33.1",
     "formik": "^2.4.4",
+    "framer-motion": "^10.16.4",
     "i18n": "^0.15.1",
     "i18next": "^23.5.1",
     "i18next-browser-languagedetector": "^7.1.0",
