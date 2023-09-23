@@ -25,7 +25,7 @@ export default function DefaultDropdown() {
     };
 
     return (
-        <div className='hidden md:inline'>
+        <div className='hidden md:inline border rounded border-[#2376ad]'>
             {
                 profile ? <Dropdown
                     arrowIcon={false}
@@ -60,7 +60,7 @@ export default function DefaultDropdown() {
                         label="Hother"
                         color='bg-[#14496c]'
                     >
-                        <div>
+                        <div >
                             <Link to="/login" className="font-main">
                                 Login
                             </Link>

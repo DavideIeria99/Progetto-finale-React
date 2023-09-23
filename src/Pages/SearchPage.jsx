@@ -1,15 +1,21 @@
+'use client';
+
 import { useEffect, useState } from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
 import GenresList from "../Components/GenresList";
 import Card from "../Components/Card";
 import StoresList from "../Components/StoresList";
+import { motion } from "framer-motion";
+import { Accordion } from 'flowbite-react';
 
 
 import Button from "../Components/UI/Button";
+import { useTranslation } from "react-i18next";
 
 export default function SearchPage() {
   const { genres, stores } = useLoaderData();
   const [searchParams, setSearchParams] = useSearchParams();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const qs = [...searchParams].map((el) => `&${el[0]}=${el[1]}`).join("");
@@ -52,8 +58,8 @@ export default function SearchPage() {
 
   return (
     <div className="flex">
-      <div className="flex w-1/5 flex-col pt-24">
-        <div className="">
+      <div className="flex w-1/5 flex-col  pt-24">
+        <div className="mb-24">
           <input
             className="peer block w-full appearance-none rounded-md border-0  bg-slate-200  p-2.5 text-gray-900  focus:outline-none focus:ring-0  dark:bg-sky-950 dark:text-white"
             type="search"
@@ -65,44 +71,66 @@ export default function SearchPage() {
             <Button type="button" onClick={handleSearched} label="Search" />
           </div>
         </div>
-        <GenresList
-          genres={genres}
-          searchParams={searchParams}
-          setSearchParams={setSearchParams}
-        />
-
-        <StoresList
-          stores={stores}
-          searchParams={searchParams}
-          setSearchParams={setSearchParams}
-        />
+        <Accordion>
+          <Accordion.Panel>
+            <Accordion.Title>
+              <p className="text-xl">{t("search.genres")}</p>
+            </Accordion.Title>
+            <Accordion.Content>
+              <GenresList
+                genres={genres}
+                searchParams={searchParams}
+                setSearchParams={setSearchParams}
+              />
+            </Accordion.Content>
+          </Accordion.Panel>
+          <Accordion.Panel>
+            <Accordion.Title>
+              <p className=" text-xl">{t("search.stores")}</p>
+            </Accordion.Title>
+            <Accordion.Content>
+              <StoresList
+                stores={stores}
+                searchParams={searchParams}
+                setSearchParams={setSearchParams}
+              />
+            </Accordion.Content>
+          </Accordion.Panel>
+        </Accordion>
       </div>
       <div className="w-4/5">
-        {games && (
-          <>
-            <div className="flex flex-wrap pt-24 justify-evenly ">
-              {games.results.map((game) => (
-                <Card key={game.id} game={game} />
-              ))}
-            </div>
+        <motion.div
+          className="min-h-screen"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}>
+          {games && (
+            <>
+              <div className="flex flex-wrap pt-24 justify-evenly ">
+                {games.results.map((game) => (
+                  <Card key={game.id} game={game} />
+                ))}
+              </div>
 
-            <div className="mb-12 mt-24 flex w-full items-center justify-center">
-              <Button
-                type="button"
-                label="Prev page"
-                onClick={() => handlePage("prev")}
-              />
+              <div className="mb-12 mt-24 flex w-full items-center justify-center">
+                <Button
+                  type="button"
+                  label="Prev page"
+                  onClick={() => handlePage("prev")}
+                />
 
-              <span className="mx-4">{searchParams.get("page")}</span>
+                <span className="mx-4">{searchParams.get("page")}</span>
 
-              <Button
-                type="button"
-                label="Next page"
-                onClick={() => handlePage("next")}
-              />
-            </div>
-          </>
-        )}
+                <Button
+                  type="button"
+                  label="Next page"
+                  onClick={() => handlePage("next")}
+                />
+              </div>
+            </>
+          )}
+        </motion.div>
       </div>
     </div >
   );

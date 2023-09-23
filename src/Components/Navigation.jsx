@@ -30,8 +30,8 @@ export default function Navigation() {
     <>
       <nav className="fixed z-30 flex h-14 w-screen justify-between items-center bg-[#14496c]  px-2">
         {/* link principali */}
-        <div className="flex w-1/4  justify-around text-white md:w-1/3">
-          <Link to="/" className="font-main font-bold tracking-widest ">
+        <div className="flex w-1/4   justify-around text-white md:w-1/3">
+          <Link to="/" className=" font-main font-bold tracking-widest ">
             Home
           </Link>
           <Link to="/search-page" className="font-main font-bold hidden md:inline ">

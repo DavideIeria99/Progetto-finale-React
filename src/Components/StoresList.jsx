@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+
 
 export default function StoresList({ stores, searchParams, setSearchParams }) {
   const handleChange = (id) => {
@@ -10,11 +10,11 @@ export default function StoresList({ stores, searchParams, setSearchParams }) {
     });
   };
 
-  const { t } = useTranslation();
+
   return (
     <>
-      <p className="mb-4 text-xl">{t("search.stores")}</p>
-      <div className="h-72 overflow-y-scroll">
+
+      <div className="">
         {stores.map((el) => (
           <p
             onClick={() => handleChange(el.id)}

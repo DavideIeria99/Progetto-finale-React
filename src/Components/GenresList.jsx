@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+
 
 export default function GenresList({ genres, searchParams, setSearchParams }) {
   const handleChange = (slug) => {
@@ -9,11 +9,11 @@ export default function GenresList({ genres, searchParams, setSearchParams }) {
       genres: slug,
     });
   };
-  const { t } = useTranslation();
+
   return (
     <>
-      <p className="mb-4 text-xl">{t("search.genres")}</p>
-      <div className="">
+
+      <div className="overflow-y-scroll h-32">
         {genres.map((el) => (
           <p
             onClick={() => handleChange(el.slug)}
