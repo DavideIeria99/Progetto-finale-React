@@ -27,10 +27,10 @@ export default function Register() {
       if (error) {
         setMessage(error.message);
       }
-      if (data) {
+      if (data.session !== null) {
         console.log(data);
         console.log("Ok, now login");
-        navigate("/profile");
+        navigate("/");
       }
     } catch (error) {
       console.log(error);

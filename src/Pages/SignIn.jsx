@@ -31,7 +31,7 @@ export default function SignIn() {
       }
       if (data.session !== null) {
         setLoggedIn(data.session);
-        // navigate("/");
+        navigate("/");
       }
     } catch (error) {
       console.log(error);

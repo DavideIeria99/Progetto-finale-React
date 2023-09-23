@@ -1,41 +1,58 @@
 import { ReactComponent as Bars } from "../assets/icons/Bars.svg";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ThemeSwitcher from "./Switchers/ThemeSwitcher";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./Switchers/LanguageSwitcher";
 import DefaultDropdown from "./UI/DefaultDropdown";
+import { supabase } from "../supabase/client";
+import useAuthStore from "../Zustand/authStore";
 export default function Navigation() {
   const [open, setOpen] = useState(false);
+  const profile = useAuthStore((state) => state.profile);
+  const isAdmin = useAuthStore((state) => state.isAdmin);
+  const setLoggedOut = useAuthStore((state) => state.setLoggedOut);
+  const navigate = useNavigate();
   const { t } = useTranslation();
+  const logOut = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+      setLoggedOut();
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
-      <nav className="fixed z-30 flex h-14 w-screen items-center bg-[#14496c]  px-2">
+      <nav className="fixed z-30 flex h-14 w-screen justify-between items-center bg-[#14496c]  px-2">
         {/* link principali */}
-        <div className="flex w-1/3  justify-around text-white md:w-1/3">
+        <div className="flex w-1/4  justify-around text-white md:w-1/3">
           <Link to="/" className="font-main font-bold tracking-widest ">
             Home
           </Link>
-          <Link to="/search-page" className="font-main hidden md:inline ">
+          <Link to="/search-page" className="font-main font-bold hidden md:inline ">
             {t("common.search")}
           </Link>
         </div>
         {/* titolo */}
-        <div className="flex w-1/3 justify-center text-white md:w-1/3">
+        <div className="flex w-1/3 justify-center  text-white md:w-1/3">
           <h1 className="font-main bg-[#283164] bg-gradient-to-r bg-clip-text p-12  text-6xl font-extrabold text-transparent from-sky-600 to-sky-100">
             {import.meta.env.VITE_PROJECT_NAME}
           </h1>
         </div>
         {/* link secondari */}
-        <div className="flex w-1/3 items-center justify-around text-white">
+        <div className=" w-1/4 items-center justify-around hidden md:flex  text-white">
           <LanguageSwitcher />
           <ThemeSwitcher />
           <DefaultDropdown />
-          <button onClick={() => setOpen(!open)} className="ml-4 md:hidden">
-            <Bars />
-          </button>
         </div>
+        <button onClick={() => setOpen(!open)} className="me-4 md:hidden">
+          <Bars />
+        </button>
       </nav>
       {/* navBar mobile */}
       <nav
@@ -48,15 +65,40 @@ export default function Navigation() {
           <Link to="/" className="font-main py-12 font-bold tracking-widest ">
             Home
           </Link>
-          <Link to="/search" className="font-main py-12 ">
-            search
+          <Link to="/search-page" className="font-main py-12 ">
+            {t("common.search")}
           </Link>
-          <Link to="/" className="font-main py-12 ">
-            home
-          </Link>
-          <Link to="/" className="font-main py-12 ">
-            home
-          </Link>
+          {profile ?
+            <>
+              <Link to="/profile" className="font-main py-12 ">
+                {profile.username}
+              </Link>
+              <Link to="/" className="font-main py-12 ">
+                modifica profilo
+              </Link>
+              {
+                isAdmin &&
+                <Link to="/" className="font-main py-12 ">
+                  banned
+                </Link>
+              }
+              <div className="font-main">
+                <button onClick={logOut}>
+                  LogOut
+                </button>
+              </div>
+            </>
+            :
+            <>
+              <Link to="/login" className="font-main py-12 ">
+                login
+              </Link>
+              <Link to="/signIn" className="font-main py-12 ">
+                {t("common.register")}
+              </Link>
+            </>}
+
+
         </div>
       </nav>
     </>
