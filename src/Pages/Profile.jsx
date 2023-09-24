@@ -48,7 +48,7 @@ export default function Profile() {
       </div>
       {update && <UpdateImage />}
 
-      {isAdmin ? <ProfileAdmin /> : <ProfileMain />}
+      {isAdmin && <ProfileAdmin />}
     </div >
   );
 }
