@@ -34,7 +34,7 @@ export default function Navigation() {
           <Link to="/" className=" font-main font-bold tracking-widest ">
             Home
           </Link>
-          <Link to="/search-page" className="font-main font-bold hidden md:inline ">
+          <Link to="/search-page" className="font-main font-bold hidden md:inline  ">
             {t("common.search")}
           </Link>
         </div>
@@ -62,23 +62,23 @@ export default function Navigation() {
         }
       >
         <div className="flex flex-col">
-          <Link to="/" className="font-main py-12 font-bold tracking-widest ">
+          <Link to="/" className="font-main py-10 font-bold tracking-widest ">
             Home
           </Link>
-          <Link to="/search-page" className="font-main py-12 ">
+          <Link to="/search-page" className="font-main py-10 font-bold  ">
             {t("common.search")}
           </Link>
           {profile ?
             <>
-              <Link to="/profile" className="font-main py-12 ">
+              <Link to="/profile" className="font-main py-10 font-bold  ">
                 {profile.username}
               </Link>
-              <Link to="/" className="font-main py-12 ">
+              <Link to="/" className="font-main py-10 font-bold  ">
                 modifica profilo
               </Link>
               {
                 isAdmin &&
-                <Link to="/" className="font-main py-12 ">
+                <Link to="/" className="font-main py-10 font-bold  ">
                   banned
                 </Link>
               }
@@ -90,12 +90,14 @@ export default function Navigation() {
             </>
             :
             <>
-              <Link to="/login" className="font-main py-12 ">
+              <Link to="/login" className="font-main py-10 font-bold  ">
                 login
               </Link>
-              <Link to="/signIn" className="font-main py-12 ">
+              <Link to="/signIn" className="font-main py-10 font-bold  ">
                 {t("common.register")}
               </Link>
+              <LanguageSwitcher />
+              <ThemeSwitcher />
             </>}
 
 

@@ -38,7 +38,7 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <h2 className=" font-main bg-[#283164] bg-gradient-to-r bg-clip-text pb-2 mt-5 text-3xl font-extrabold text-transparent from-sky-600 to-sky-100 md:text-5xl">
+          <h2 className=" font-main bg-[#283164] bg-gradient-to-r bg-clip-text pb-2 mt-5 text-3xl font-extrabold text-transparent from-sky-600 dark:to-sky-100 to-sky-800 md:text-5xl">
             {t("home.playMoment")}
           </h2>
         </div>

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../supabase/client";
 import getProfileImage from "../Utilities/getProfileImage";
-import Input from "../Components/InputFake";
 import useAuthStore from "../Zustand/authStore";
 
 export default function UpdateImage() {
   const profile = useAuthStore((state) => state.profile);
+  const setProfile = useAuthStore((state) => state.setProfile);
   const [preview, setPreview] = useState();
   const [uploading, setUploading] = useState(false);
   const [file, setFile] = useState();
@@ -33,30 +33,42 @@ export default function UpdateImage() {
   const submit = async (e) => {
     e.preventDefault();
 
-    setUploading(() => true);
-    // nome file
-    const fileName = `${profile.id + Math.random()}`;
+    try {
+      setUploading(true);
 
-    const { error: uploadError } = await supabase.storage
-      .from("avatars")
-      .upload(fileName, file);
+      if (!file) {
+        return;
+      }
 
-    if (uploadError) {
-      throw uploadError;
-    }
+      const fileExt = file.name.split(".").pop();
+      const fileName = `${profile.username}-${Math.random()}.${fileExt}`;
+      const filePath = `${fileName}`;
 
-    // update profile
-    const updated_at = new Date();
-    const { error } = await supabase.from("profiles").upsert({
-      id: profile.id,
-      updated_at,
-      avatar_url: fileName,
-    });
+      let { data: uploadData, error: uploadError } = await supabase.storage
+        .from("avatars")
+        .upload(filePath, file);
+      console.log(uploadData);
+      if (uploadError) {
+        throw uploadError;
+      }
 
-    if (error) {
-      console.log(error);
-    } else {
-      setUploading(() => false);
+      const updates = {
+        id: profile.id,
+        avatar_url: filePath,
+        updated_at: new Date(),
+      };
+
+      let { data, error } = await supabase
+        .from("profiles")
+        .upsert(updates)
+        .select()
+        .single();
+
+      setProfile(data);
+    } catch (error) {
+      alert(error.message);
+    } finally {
+      setUploading(false);
       setFile(() => null);
       setPreview(() => null);
     }
@@ -91,7 +103,8 @@ export default function UpdateImage() {
       {/* form per uploadare l'immagine */}
       <div>
         <form onSubmit={submit}>
-          <Input
+          {uploading ? "Uploadind" : "Upload"}
+          <input
             type="file"
             accept="image/*"
             disabled={uploading}

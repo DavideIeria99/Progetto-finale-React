@@ -9,7 +9,6 @@ import getProfileImage from '../../Utilities/getProfileImage';
 
 export default function DefaultDropdown() {
     const profile = useAuthStore((state) => state.profile);
-    const isAdmin = useAuthStore((state) => state.isAdmin);
     const setLoggedOut = useAuthStore((state) => state.setLoggedOut);
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -25,7 +24,7 @@ export default function DefaultDropdown() {
     };
 
     return (
-        <div className='hidden md:inline border rounded border-[#2376ad]'>
+        <div className='hidden md:inline border rounded-full border-[#2376ad]'>
             {
                 profile ? <Dropdown
                     arrowIcon={false}
@@ -34,13 +33,13 @@ export default function DefaultDropdown() {
                     label={<Avatar alt="User settings" img={getProfileImage(profile.avatar_url)} rounded />} //vedere come la fatto lui
                 >
                     <Dropdown.Header>
-                        <span className="block font-main">
-                            {profile.username}
-                        </span>
+                        <Link to="/profile">
+                            <span className="block font-main">
+                                {profile.username}
+                            </span>
+                        </Link>
+
                     </Dropdown.Header>
-                    {isAdmin && <p>
-                        banned
-                    </p>}
                     <p>
                         modifica profilo
                     </p>

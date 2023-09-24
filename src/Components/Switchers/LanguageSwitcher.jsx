@@ -13,7 +13,7 @@ export default function LanguageSwitcher() {
       {LANGUAGES.map((el) => (
         <button
           className={
-            "mx-2  uppercase " +
+            "mx-1  uppercase " +
             (el.code === i18n.resolvedLanguage
               ? "font-bold tracking-widest"
               : "")

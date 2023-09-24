@@ -48,8 +48,8 @@ export default function Profiles() {
           <div className="shadow-md sm:rounded-lg">
             <Table headers={data.headers} entries={data.entries} />
           </div>
-          <div className="mt-12 flex justify-center">
-            <div className="mx-2">
+          <div className="my-10 flex justify-center">
+            <div className="mx-1">
               {page > 0 && (
                 <Button
                   type="button"
@@ -58,10 +58,11 @@ export default function Profiles() {
                 />
               )}
             </div>
+            <div className="font-bold font-main my-2">
+              {page}
+            </div>
 
-            {page}
-
-            <div className="mx-2">
+            <div className="mx-1">
               <Button
                 type="button"
                 onClick={() => setPage((prev) => prev + 1)}
