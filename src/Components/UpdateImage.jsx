@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import useAuthStore from "../Zustand/authStore";
 import { supabase } from "../supabase/client";
 import { motion } from "framer-motion";
+import getProfileImage from "../Utilities/getProfileImage";
 
 export default function UpdateImage() {
   const profile = useAuthStore((state) => state.profile);
