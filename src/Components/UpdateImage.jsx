@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "../supabase/client";
 import getProfileImage from "../Utilities/getProfileImage";
 import useAuthStore from "../Zustand/authStore";
+import { motion } from "framer-motion";
 
 export default function UpdateImage() {
   const profile = useAuthStore((state) => state.profile);
@@ -75,49 +76,56 @@ export default function UpdateImage() {
   };
 
   return (
-    <div className=" mx-auto w-2/5 rounded-md bg-slate-500">
-      <h2 className="text-center text-lg font-bold">
-        {uploading ? "uploading" : "Upload"}
-      </h2>
+    <motion.div
+      className="min-h-screen"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}>
+      <div className=" mx-auto w-2/5 rounded-md bg-slate-500">
+        <h2 className="text-center text-lg font-bold">
+          {uploading ? "uploading" : "Upload"}
+        </h2>
 
-      {/* l'immagine presente */}
-      <div className="flex justify-around">
-        <div className="w-2/5">
-          <h3>immagine profile</h3>
-          {profile && (
-            <img
-              className="mx-1 w-full  rounded-sm "
-              src={getProfileImage(profile.avatar_url)}
-              alt="Avatars"
+        {/* l'immagine presente */}
+        <div className="flex justify-around">
+          <div className="w-2/5">
+            <h3>immagine profile</h3>
+            {profile && (
+              <img
+                className="mx-1 w-full  rounded-sm "
+                src={getProfileImage(profile.avatar_url)}
+                alt="Avatars"
+              />
+            )}
+          </div>
+          <div className="w-2/5">
+            <h3>preview</h3>
+            {preview && (
+              <img className="mx-1 w-full  rounded-sm " src={preview} />
+            )}
+          </div>
+        </div>
+
+        {/* form per uploadare l'immagine */}
+        <div>
+          <form onSubmit={submit}>
+            {uploading ? "Uploadind" : "Upload"}
+            <input
+              type="file"
+              accept="image/*"
+              disabled={uploading}
+              onChange={handleFile}
             />
-          )}
-        </div>
-        <div className="w-2/5">
-          <h3>preview</h3>
-          {preview && (
-            <img className="mx-1 w-full  rounded-sm " src={preview} />
-          )}
+            <button
+              className="mb-2 rounded-full bg-green-700 px-2 text-center"
+              type="submit"
+            >
+              submit
+            </button>
+          </form>
         </div>
       </div>
-
-      {/* form per uploadare l'immagine */}
-      <div>
-        <form onSubmit={submit}>
-          {uploading ? "Uploadind" : "Upload"}
-          <input
-            type="file"
-            accept="image/*"
-            disabled={uploading}
-            onChange={handleFile}
-          />
-          <button
-            className="mb-2 rounded-full bg-green-700 px-2 text-center"
-            type="submit"
-          >
-            submit
-          </button>
-        </form>
-      </div>
-    </div>
+    </motion.div>
   );
 }
