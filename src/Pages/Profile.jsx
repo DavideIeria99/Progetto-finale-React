@@ -1,6 +1,5 @@
 import { useState } from "react";
 import ProfileAdmin from "../Components/Admin/ProfileAdmin";
-import ProfileMain from "../Components/ProfileMain";
 import getProfileImage from "../Utilities/getProfileImage";
 import useAuthStore from "../Zustand/authStore";
 import UpdateImage from "../Components/UpdateImage";
