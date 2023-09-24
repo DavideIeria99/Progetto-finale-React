@@ -11,6 +11,8 @@ import SignIn from "./Pages/SignIn";
 import Details, { getGameDetails } from "./Pages/Details";
 import SearchPage, { loadAll } from "./Pages/SearchPage";
 import Profile from "./Pages/Profile";
+import PagePrefer from "./Pages/Post/PagePrefer";
+
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +49,11 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <ProtectedRoute element={<Profile />} />,
+      },
+      {
+        path: "/preferer",
+        element: <ProtectedRoute element={<PagePrefer />} />,
+
       },
     ],
   },

@@ -32,6 +32,7 @@ export default function Details() {
     }
     setLoggedIn(data.data.session);
   }
+  console.log(game);
   return (
     <div
       className="min-h-screen px-12 py-24"

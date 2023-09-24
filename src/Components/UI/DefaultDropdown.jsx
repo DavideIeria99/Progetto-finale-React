@@ -40,12 +40,9 @@ export default function DefaultDropdown() {
                         </Link>
 
                     </Dropdown.Header>
-                    <p>
+                    <Link to="/preferer">
                         Lista Preferiti
-                    </p>
-                    {/* <Link to="/update">
-                        modifica profilo
-                    </Link> */}
+                    </Link>
                     <Dropdown.Divider />
                     <div className="font-main">
                         <button onClick={logOut}>

@@ -75,7 +75,7 @@ export default function Navigation() {
               {/* <Link to="/update" className="font-main py-10 font-bold">
                 Modifica profilo
               </Link> */}
-              <Link to="/" className="font-main py-10 font-bold">
+              <Link to="/preferer" className="font-main py-10 font-bold">
                 preferiti
               </Link>
               <div className="font-main">
