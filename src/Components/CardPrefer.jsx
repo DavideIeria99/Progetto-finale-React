@@ -13,7 +13,7 @@ export default function CardPrefer({ game }) {
         // console.log(r);
         setPrefer(() => r.results);
       });
-  }, []);
+  }, [prefer]);
   console.log(prefer);
   return (
     <div className="mb-5 w-1/2 px-2  flex justify-between md:w-1/3 ">

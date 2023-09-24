@@ -11,7 +11,7 @@ import SignIn from "./Pages/SignIn";
 import Details, { getGameDetails } from "./Pages/Details";
 import SearchPage, { loadAll } from "./Pages/SearchPage";
 import Profile from "./Pages/Profile";
-import PagePrefer from "./Pages/Post/PagePrefer";
+import PagePrefer from "./Pages/PagePrefer";
 
 
 export const router = createBrowserRouter([
