@@ -5,6 +5,7 @@ import useAuthStore from "../Zustand/authStore";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import Button from "../Components/UI/Button";
+import TitleName from "../Utilities/TitleName";
 
 export default function Login() {
   const setLoggedIn = useAuthStore((state) => state.setLoggedIn);
@@ -30,6 +31,7 @@ export default function Login() {
   };
   return (
     <div className="mx-auto pt-24  min-h-screen lg:w-1/2">
+      <TitleName title={"login"} />
       <Formik
         initialValues={{
           password: "",

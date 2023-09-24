@@ -4,6 +4,7 @@ import { supabase } from "../supabase/client";
 import useAuthStore from "../Zustand/authStore";
 import { Link, useNavigate } from "react-router-dom";
 import Input from "../Components/UI/Input";
+import TitleName from "../Utilities/TitleName";
 
 export default function SignIn() {
   const navigate = useNavigate();
@@ -39,6 +40,7 @@ export default function SignIn() {
   };
   return (
     <div className="min-h-screen pt-24">
+      <TitleName title={"register"} />
       <Formik
         initialValues={{
           password: "",

@@ -4,6 +4,7 @@ import ProfileMain from "../Components/ProfileMain";
 import getProfileImage from "../Utilities/getProfileImage";
 import useAuthStore from "../Zustand/authStore";
 import UpdateImage from "../Components/UpdateImage";
+import TitleName from "../Utilities/TitleName";
 
 
 
@@ -27,6 +28,7 @@ export default function Profile() {
   console.log(profile);
   return (
     <div className="pt-20">
+      <TitleName title={"Profile"} />
       <h1 className="font-main  bg-[#283164] bg-gradient-to-r bg-clip-text pb-12 text-6xl font-extrabold text-transparent from-sky-600 dark:to-sky-100 to-sky-800">benvenuto {profile && profile.first_name} </h1>
       <div className="flex justify-evenly mb-10">
         <div className="w-1/3  border-double border-2 p-5 rounded dark:border-sky-500 border-sky-700  ">

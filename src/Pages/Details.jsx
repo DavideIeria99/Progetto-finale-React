@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import useAuthStore from "../Zustand/authStore";
 import { supabase } from "../supabase/client";
 import GameChat from "../Components/GameChat/GameChat";
+import TitleName from "../Utilities/TitleName";
 
 
 export default function Details() {
@@ -40,6 +41,7 @@ export default function Details() {
         backgroundPosition: "center",
       }}
     >
+      <TitleName title={"details"} />
       <div className="flex  text-white">
         <div className="w-1/2">
           <p className="font-main  bg-gradient-to-r  from-sky-600 to-sky-100 bg-clip-text pb-4 text-3xl font-extrabold text-transparent md:text-5xl ">

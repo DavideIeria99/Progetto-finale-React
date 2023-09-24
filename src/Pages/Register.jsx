@@ -2,6 +2,7 @@ import { useState } from "react";
 import { supabase } from "../supabase/client";
 import { useNavigate } from "react-router-dom";
 import Input from "../Components/InputFake";
+import TitleName from "../Utilities/TitleName";
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -39,7 +40,7 @@ export default function Register() {
 
   return (
     <div className="mx-auto mt-24 min-h-screen lg:w-1/2">
-      <pre>{JSON.stringify(form, null, 4)}</pre>
+      <TitleName title={"Register"} />
       <p className="text-center text-2xl font-bold text-white">Register</p>
       <form onSubmit={submit}>
         <Input

@@ -11,6 +11,7 @@ import { Accordion } from 'flowbite-react';
 
 import Button from "../Components/UI/Button";
 import { useTranslation } from "react-i18next";
+import TitleName from "../Utilities/TitleName";
 
 export default function SearchPage() {
   const { genres, stores } = useLoaderData();
@@ -58,6 +59,7 @@ export default function SearchPage() {
 
   return (
     <div className="flex">
+      <TitleName title={"Search"} />
       <div className="flex w-1/5 flex-col  pt-24">
         <div className="mb-24">
           <input
