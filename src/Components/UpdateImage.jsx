@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { supabase } from "../supabase/client";
-import getProfileImage from "../Utilities/getProfileImage";
 import useAuthStore from "../Zustand/authStore";
+import { supabase } from "../supabase/client";
 import { motion } from "framer-motion";
 
 export default function UpdateImage() {
