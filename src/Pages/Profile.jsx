@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+
 import ProfileAdmin from "../Components/Admin/ProfileAdmin";
 import ProfileMain from "../Components/ProfileMain";
 import getProfileImage from "../Utilities/getProfileImage";
 import useAuthStore from "../Zustand/authStore";
+
 
 export default function Profile() {
   const isAdmin = useAuthStore((state) => state.isAdmin);

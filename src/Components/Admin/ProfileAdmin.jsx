@@ -12,7 +12,7 @@ export default function Profiles() {
     let { data, error } = await supabase
       .from("profiles")
       .select()
-      .range(10 * page, page * 10 + 10)
+      .range(5 * page, page * 5 + 5)
       .order("id", { ascending: true });
     console.log("data", data, error);
 
@@ -43,6 +43,7 @@ export default function Profiles() {
 
   return (
     <div>
+      <h1 className="font-main  bg-[#283164] bg-gradient-to-r bg-clip-text pb-12 text-6xl font-extrabold text-transparent from-sky-600 dark:to-sky-100 to-sky-800">lista profili</h1>
       {data ? (
         <div className="relative overflow-x-auto ">
           <div className="shadow-md sm:rounded-lg">
