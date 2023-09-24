@@ -11,7 +11,6 @@ import useAuthStore from "../Zustand/authStore";
 export default function Navigation() {
   const [open, setOpen] = useState(false);
   const profile = useAuthStore((state) => state.profile);
-  const isAdmin = useAuthStore((state) => state.isAdmin);
   const setLoggedOut = useAuthStore((state) => state.setLoggedOut);
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -73,15 +72,12 @@ export default function Navigation() {
               <Link to="/profile" className="font-main py-10 font-bold  ">
                 {profile.username}
               </Link>
-              <Link to="/" className="font-main py-10 font-bold  ">
-                modifica profilo
+              {/* <Link to="/update" className="font-main py-10 font-bold">
+                Modifica profilo
+              </Link> */}
+              <Link to="/" className="font-main py-10 font-bold">
+                preferiti
               </Link>
-              {
-                isAdmin &&
-                <Link to="/" className="font-main py-10 font-bold  ">
-                  banned
-                </Link>
-              }
               <div className="font-main">
                 <button onClick={logOut}>
                   LogOut

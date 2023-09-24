@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ProfileAdmin from "../Components/Admin/ProfileAdmin";
 import ProfileMain from "../Components/ProfileMain";
 import getProfileImage from "../Utilities/getProfileImage";
@@ -22,11 +23,16 @@ export default function Profile() {
           <p><span className="font-bold dark:text-sky-400 text-sky-800">first nane: </span> {profile && profile.first_name}</p>
           <p><span className="font-bold dark:text-sky-400 text-sky-800">last name: </span> {profile && profile.last_name}</p>
           <p><span className="font-bold dark:text-sky-400 text-sky-800">id: </span> {profile && profile.id}</p>
+          {/* <Link to="/update" >
+            <button className=" bg-sky-400 text-sky-800 font-bold rounded-full p-2 mt-2">
+              modifica Profilo
+            </button>
+          </Link> */}
         </div>
       </div>
 
 
       {isAdmin ? <ProfileAdmin /> : <ProfileMain />}
-    </div>
+    </div >
   );
 }

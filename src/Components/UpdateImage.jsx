@@ -43,7 +43,7 @@ export default function UpdateImage() {
       const fileExt = file.name.split(".").pop();
       const fileName = `${profile.username}-${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
-
+      //aggiorni avatar
       let { data: uploadData, error: uploadError } = await supabase.storage
         .from("avatars")
         .upload(filePath, file);
@@ -57,7 +57,7 @@ export default function UpdateImage() {
         avatar_url: filePath,
         updated_at: new Date(),
       };
-
+      // aggiorni il profile
       let { data, error } = await supabase
         .from("profiles")
         .upsert(updates)

@@ -10,6 +10,7 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import SignIn from "./Pages/SignIn";
 import Details, { getGameDetails } from "./Pages/Details";
 import SearchPage, { loadAll } from "./Pages/SearchPage";
+import UpdateProfile from "./Pages/UpdateProfile";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: "/profile",
         element: <ProtectedRoute element={<Profile />} />,
+      },
+      {
+        path: "/update",
+        element: <ProtectedRoute element={<UpdateProfile />} />,
       },
     ],
   },
