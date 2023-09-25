@@ -18,7 +18,7 @@ export default function PagePrefer() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 1 }}>
-                <div className="flex flex-wrap justify-center">
+                <div className="flex flex-wrap px-20 w-full">
                     {profile.favorites.length > 0 ? profile.favorites.map((el) => <CardPrefer key={el.id} game={el} />) : <CardPrefer key={profile.id} game={profile.favorites.game_id} />}
                 </div>
             </motion.div>
