@@ -1,11 +1,10 @@
-import { prefer } from "../Utilities/prefer";
+import { prefer } from "../Utilities/Prefer";
 
 export default function CardPrefer({ game }) {
   const favorites = prefer(game);
   console.log(favorites);
   return (
     <div className="mb-5 w-1/2 px-2  flex justify-between md:w-1/3 ">
-
       <div className="relative mx-20 w-[10rem] md:w-[20rem] hover:border-solid hover:border-2 hover:border-sky-500 rounded-lg duration-300 hover:z-10 md:mx-2">
         {/* Background Image  */}
         <img
