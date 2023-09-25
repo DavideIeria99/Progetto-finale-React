@@ -2,7 +2,7 @@ import PreferGame from "../Utilities/PreferGame";
 
 
 export default function CardPrefer({ game }) {
-  console.log(game);
+
   const favorites = PreferGame(game);
   console.log(favorites);
   return (
