@@ -1,7 +1,9 @@
-import { prefer } from "../Utilities/Prefer";
+import PreferGame from "../Utilities/PreferGame";
+
 
 export default function CardPrefer({ game }) {
-  const favorites = prefer(game);
+  console.log(game);
+  const favorites = PreferGame(game);
   console.log(favorites);
   return (
     <div className="mb-5 w-1/2 px-2  flex justify-between md:w-1/3 ">
