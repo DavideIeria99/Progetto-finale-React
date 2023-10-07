@@ -64,7 +64,10 @@ export default function UpdateImage() {
         .upsert(updates)
         .select()
         .single();
+      if (error) {
+        console.log(error);
 
+      }
       setProfile(data);
     } catch (error) {
       alert(error.message);

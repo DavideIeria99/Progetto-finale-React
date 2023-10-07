@@ -33,17 +33,20 @@ export default function Profile() {
         <div className="w-1/3  border-double border-2 p-5 rounded dark:border-sky-500 border-sky-700  ">
           <img src={getProfileImage(profile.avatar_url)} alt="" className=" bg-center bg-cover" />
         </div>
+        {
+          profile &&
+          <div className="border-double border-2 rounded dark:border-sky-500 border-sky-700 my-10 w-1/3 px-3 flex flex-col justify-center">
 
-        <div className="border-double border-2 rounded dark:border-sky-500 border-sky-700 my-10 w-1/3 px-3 flex flex-col justify-center">
-          <p><span className="font-bold dark:text-sky-400 text-sky-800">userName:</span> {profile && profile.username}</p>
-          <p><span className="font-bold dark:text-sky-400 text-sky-800">first nane: </span> {profile && profile.first_name}</p>
-          <p><span className="font-bold dark:text-sky-400 text-sky-800">last name: </span> {profile && profile.last_name}</p>
-          <p><span className="font-bold dark:text-sky-400 text-sky-800">id: </span> {profile && profile.id}</p>
+            <p><span className="font-bold dark:text-sky-400 text-sky-800">userName:</span> {profile.username}</p>
+            <p><span className="font-bold dark:text-sky-400 text-sky-800">first name: </span> {profile.first_name}</p>
+            <p><span className="font-bold dark:text-sky-400 text-sky-800">last name: </span> {profile.last_name}</p>
 
-          <button onClick={handleChange} className=" bg-sky-400 text-sky-800 font-bold rounded-full p-2 mt-2">
-            modifica Avatar
-          </button>
-        </div>
+            <button onClick={handleChange} className=" bg-sky-400 text-sky-800 font-bold rounded-full p-2 mt-2">
+              modifica Avatar
+            </button>
+          </div>
+        }
+
       </div>
       {update && <UpdateImage />}
 
