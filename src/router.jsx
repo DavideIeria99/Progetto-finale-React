@@ -12,7 +12,7 @@ import Details, { getGameDetails } from "./Pages/Details";
 import SearchPage, { loadAll } from "./Pages/SearchPage";
 import Profile from "./Pages/Profile";
 import PagePrefer from "./Pages/PagePrefer";
-import UpdateProfile from "./Pages/Post/UpdateProfile";
+import UpdateProfile from "./Pages/UpdateProfile";
 
 
 
