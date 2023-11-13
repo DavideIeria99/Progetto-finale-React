@@ -2,8 +2,8 @@ import { Formik, Field, Form } from "formik";
 import { supabase } from "../supabase/client";
 import useAuthStore from "../Zustand/authStore";
 import * as Yup from "yup";
-import Input from "../Components/UI/Input";
-import Button from "../Components/UI/Button";
+import Input from "./UI/Input";
+import Button from "./UI/Button";
 import { useNavigate } from "react-router-dom";
 
 export default function UpdateProfile() {
@@ -29,7 +29,7 @@ export default function UpdateProfile() {
                 .select()
             if (data) {
                 console.log(data);
-                navigate('/')
+                navigate('/profile')
             }
             if (error) {
                 console.log(error.message);
@@ -55,7 +55,7 @@ export default function UpdateProfile() {
     };
 
     return (
-        <div className="min-h-screen pt-24">
+        <div className="my-2">
             {
                 profile &&
                 <Formik
@@ -74,7 +74,7 @@ export default function UpdateProfile() {
                     })}
                     onSubmit={(values) => submit(values)}
                 >
-                    <Form className="mx-auto flex w-4/5 flex-wrap rounded bg-slate-50 py-8 text-black shadow dark:bg-gray-900 md:w-1/3">
+                    <Form className="mx-auto flex w-4/5 flex-wrap rounded border-2 dark:border-sky-500  bg-trasparent py-8 text-black shadow  md:w-1/3">
                         <div className="w-full text-center">
                             <h1 className="text-4xl font-bold text-black dark:text-white">
                                 Update

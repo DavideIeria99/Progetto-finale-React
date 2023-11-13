@@ -22,7 +22,6 @@ export default function DefaultDropdown() {
             console.log(error);
         }
     };
-
     return (
         <div className='hidden md:inline border rounded-full border-[#2376ad]'>
             {
@@ -43,12 +42,6 @@ export default function DefaultDropdown() {
                     <Link to="/preferer">
                         Lista Preferiti
                     </Link>
-                    <div>
-                        <Link to="/update">
-                            aggiornamento
-                        </Link>
-                    </div>
-
                     <Dropdown.Divider />
                     <div className="font-main">
                         <button onClick={logOut}>

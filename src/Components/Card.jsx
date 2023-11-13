@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function Card({ game }) {
   return (
     <div className="mb-5 w-1/2 px-2  flex justify-between md:w-1/3 ">
-      <Link to={`/details/${game.id}`}>
+      <Link to={`/details/${game.slug}`}>
         <div className="relative mx-20 w-[10rem] md:w-[20rem] hover:border-solid hover:border-2 hover:border-sky-500 rounded-lg duration-300 hover:z-10 md:mx-2">
           {/* Background Image  */}
           <img

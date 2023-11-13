@@ -7,6 +7,8 @@ export default function BanUser({ user, getData, banned }) {
   // rimuovere l'admin e se stessi dal banhammer
 
   const toggleBan = async (ban) => {
+    return console.log('ok ban')
+
     const { data: meta } = await supabase.rpc("get_claims", {
       uid: user,
     });

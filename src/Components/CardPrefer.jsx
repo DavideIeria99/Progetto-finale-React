@@ -24,7 +24,7 @@ export default function CardPrefer({ game }) {
     <div>
       {Favorites &&
         <div className="mb-5 w-1/2 px-2 md:w-1/3 ">
-          <Link to={`/details/${Favorites.id}`}>
+          <Link to={`/details/${Favorites.slug}`}>
             <div className="relative mx-20 w-[10rem] md:w-[20rem] hover:border-solid hover:border-2 hover:border-sky-500 rounded-lg duration-300 hover:z-10 md:mx-2">
               {/* Background Image  */}
               <img

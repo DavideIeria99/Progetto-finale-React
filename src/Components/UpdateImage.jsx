@@ -80,12 +80,11 @@ export default function UpdateImage() {
 
   return (
     <motion.div
-      className="min-h-screen"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 1 }}>
-      <div className=" mx-auto w-2/5 rounded-md bg-slate-500">
+      <div className=" mx-auto w-2/5 rounded-md bg-slate-500 my-5">
         <h2 className="text-center text-lg font-bold">
           {uploading ? "uploading" : "Upload"}
         </h2>

@@ -12,7 +12,6 @@ import Details, { getGameDetails } from "./Pages/Details";
 import SearchPage, { loadAll } from "./Pages/SearchPage";
 import Profile from "./Pages/Profile";
 import PagePrefer from "./Pages/PagePrefer";
-import UpdateProfile from "./Pages/UpdateProfile";
 
 
 
@@ -43,10 +42,6 @@ export const router = createBrowserRouter([
       {
         path: "/sign-in",
         element: <SignIn />,
-      },
-      {
-        path: "/update",
-        element: <UpdateProfile />,
       },
       {
         path: "/details/:id",

@@ -8,7 +8,7 @@ i18next
   .use(I18NextHttpBackend)
   .use(initReactI18next)
   .init({
-    debug: true,
+    // debug: true,
     fallbackLng: "en",
     backend: {
       loadPath: `./locales/{{lng}}.json`,

@@ -4,6 +4,7 @@ import getProfileImage from "../Utilities/getProfileImage";
 import useAuthStore from "../Zustand/authStore";
 import UpdateImage from "../Components/UpdateImage";
 import TitleName from "../Utilities/TitleName";
+import UpdateProfile from "../Components/UpdateProfile";
 
 
 
@@ -11,18 +12,13 @@ export default function Profile() {
   const isAdmin = useAuthStore((state) => state.isAdmin);
   const profile = useAuthStore((state) => state.profile);
   const [update, setUpdate] = useState(false);
+  const [banned, setBanned] = useState(false);
+  const [user, setUser] = useState(false);
 
 
-  const handleChange = () => {
-    if (update === false) {
-      setUpdate(true);
-      console.log(update);
-
-    } else {
-      setUpdate(false);
-      console.log(update);
-    }
-  };
+  const handleChange = () => { update === false ? setUpdate(true) : setUpdate(false) };
+  const bannedChange = () => { banned === false ? setBanned(true) : setBanned(false) };
+  const userChange = () => { user === false ? setUser(true) : setUser(false) };
   console.clear
   console.log(profile);
   return (
@@ -44,13 +40,26 @@ export default function Profile() {
             <button onClick={handleChange} className=" bg-sky-400 text-sky-800 font-bold rounded-full p-2 mt-2">
               modifica Avatar
             </button>
+            <button onClick={userChange} className=" bg-sky-400 text-sky-800 font-bold rounded-full p-2 mt-2">
+              modifica dati
+            </button>
+            {
+              isAdmin &&
+              <button onClick={bannedChange} className=" bg-sky-400 text-sky-800 font-bold rounded-full p-2 mt-2">
+                Lista profili
+              </button>
+            }
+
           </div>
         }
 
       </div>
       {update && <UpdateImage />}
 
-      {isAdmin && <ProfileAdmin />}
+      {banned && <ProfileAdmin />}
+
+      {user && <UpdateProfile />}
+
     </div >
   );
 }

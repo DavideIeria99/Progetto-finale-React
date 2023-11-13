@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../../supabase/client";
 import BanUser from "./BanUser";
+import PersonDelete from "./PersonDelete";
 import Table from "../UI/Table";
 import Button from "../UI/Button";
 export default function Profiles() {
@@ -16,7 +17,7 @@ export default function Profiles() {
       .order("id", { ascending: true });
     console.log("data", data, error);
 
-    const headers = ["Id", "Username", "Firstname", "Lastname", "Banned until"];
+    const headers = ["Id", "Username", "Firstname", "Lastname", "Banned until", "action"];
 
     const entries = data.map((el) => [
       el.id,
@@ -29,6 +30,11 @@ export default function Profiles() {
         banned={el.banned_until}
         getData={getData}
       />,
+      <PersonDelete
+        key={el.id}
+        user={el.id}
+        getData={getData}
+      />
     ]);
 
     setData({
