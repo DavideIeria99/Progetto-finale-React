@@ -67,10 +67,10 @@ export default function SearchPage() {
             type="search"
             value={searched}
             onChange={(e) => setSearched(e.target.value)}
-            placeholder="Scrivi. Muoviti."
+            placeholder={t("search.write")}
           />
           <div className="mt-3 text-right">
-            <Button type="button" onClick={handleSearched} label="Search" />
+            <Button type="button" onClick={handleSearched} label={t('search.search')} />
           </div>
         </div>
         <Accordion>

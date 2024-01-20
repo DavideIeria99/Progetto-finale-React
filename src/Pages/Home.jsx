@@ -14,7 +14,7 @@ export default function Home() {
       .then((r) => r.json())
       .then((r) => {
         // console.log(r);
-        setData(() => r.results);
+        setData(() => r.results.splice(1, 8));
       });
   }, []);
   console.log();

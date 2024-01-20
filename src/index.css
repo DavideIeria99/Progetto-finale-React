@@ -5,7 +5,7 @@
 
 :root {
   --primary: #00004b;
-  --secondary: #0c2371;
+  --secondary: #0c2471c7;
   --accent: #34dedf;
   font-family: "Rajdhani", sans-serif;
 }
@@ -23,7 +23,7 @@
   }
 
   .bg-main-light {
-    background: rgb(109, 153, 248);
+    background: white;
     background-size: 40px, cover, cover;
     background-repeat: repeat, no-repeat, no-repeat;
   }
@@ -35,11 +35,7 @@
     background-position: center;
   }
   .bg-header-light {
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.7),
-        rgba(0, 0, 0, 0.7),
-        rgb(109, 153, 248)
-      ),
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7), white),
       url("./assets/sfondoStore.jpg");
     background-size: cover;
     background-position: center;
@@ -58,7 +54,6 @@ body {
 ::-webkit-scrollbar {
   height: 10px;
   width: 10px;
-  background: var(--background);
 }
 
 ::-webkit-scrollbar-thumb {

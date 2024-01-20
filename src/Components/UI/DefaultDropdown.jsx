@@ -52,7 +52,7 @@ export default function DefaultDropdown() {
                     :
                     <Dropdown
                         dismissOnClick={false}
-                        label="Hother"
+                        label="Opzioni"
                         color='bg-[#14496c]'
                     >
                         <div >

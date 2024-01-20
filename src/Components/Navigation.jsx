@@ -1,5 +1,4 @@
 import { ReactComponent as Bars } from "../assets/icons/Bars.svg";
-
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ThemeSwitcher from "./Switchers/ThemeSwitcher";
@@ -8,12 +7,15 @@ import LanguageSwitcher from "./Switchers/LanguageSwitcher";
 import DefaultDropdown from "./UI/DefaultDropdown";
 import { supabase } from "../supabase/client";
 import useAuthStore from "../Zustand/authStore";
+
 export default function Navigation() {
+
   const [open, setOpen] = useState(false);
   const profile = useAuthStore((state) => state.profile);
   const setLoggedOut = useAuthStore((state) => state.setLoggedOut);
   const navigate = useNavigate();
   const { t } = useTranslation();
+
   const logOut = async () => {
     try {
       const { error } = await supabase.auth.signOut();
@@ -27,7 +29,7 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="fixed z-30 flex h-14 w-screen justify-between items-center bg-[#14496c]  px-2">
+      <nav className="fixed z-30 flex h-14 w-screen justify-between items-center bg-[#0c2371] dark:bg-[#14496c]  px-2">
         {/* link principali */}
         <div className="flex w-1/4   justify-around text-white md:w-1/3">
           <Link to="/" className=" font-main font-bold tracking-widest ">
@@ -49,18 +51,20 @@ export default function Navigation() {
           <ThemeSwitcher />
           <DefaultDropdown />
         </div>
-        <button onClick={() => setOpen(!open)} className="me-4 md:hidden">
+        <button id="dropdownDefaultButton" className="me-4 md:hidden" onClick={() => setOpen(!open)} data-dropdown-toggle="dropdown" type="button">
           <Bars />
         </button>
       </nav>
+
       {/* navBar mobile */}
-      <nav
+      <div
+        id="dropdown"
         className={
           "fixed right-0 z-20 h-screen w-full overflow-y-auto bg-gray-300 bg-opacity-80 p-4 pt-20 backdrop-blur-sm  transition-transform dark:bg-sky-900 dark:bg-opacity-80 " +
           (open ? "" : "translate-x-full")
         }
       >
-        <div className="flex flex-col">
+        <ul className="flex flex-col" aria-labelledby="dropdownDefaultButton" onClick={() => setOpen(!open)}>
           <Link to="/" className="font-main py-10 font-bold tracking-widest ">
             Home
           </Link>
@@ -89,13 +93,14 @@ export default function Navigation() {
               <Link to="/signIn" className="font-main py-10 font-bold  ">
                 {t("common.register")}
               </Link>
-              <LanguageSwitcher />
-              <ThemeSwitcher />
+              <div >
+                <LanguageSwitcher />
+                <ThemeSwitcher />
+              </div>
             </>}
-
-
-        </div>
-      </nav>
+        </ul>
+      </div>
     </>
   );
 }
+

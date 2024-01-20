@@ -17,6 +17,8 @@
       "title": "ReHack - Pagina di ricerca"
     },
     "genres": "Generi",
-    "stores": "Negozi"
+    "stores": "Negozi",
+    "search": "cerca",
+    "write": "scrivi..."
   }
 }

@@ -17,6 +17,8 @@
       "title": "ReHack - Search Page"
     },
     "genres": "Genres",
-    "stores": "Stores"
+    "stores": "Stores",
+    "search": "search",
+    "write": "write..."
   }
 }

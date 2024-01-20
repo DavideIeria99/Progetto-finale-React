@@ -103,7 +103,7 @@ export default function Details() {
         </div>
         <div className="w-1/2">{profile && <GameChat game={game.id} />}</div>
       </div>
-      <div className="w-4/5">
+      <div className="w-4/5 text-white">
         <div dangerouslySetInnerHTML={{ __html: game.description }}></div>
       </div>
     </div>
